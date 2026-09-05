@@ -59,6 +59,9 @@ export default function PremiumLoader() {
   if (phase === 'gone') return null
 
   const offset = CIRCUMFERENCE - (progress / 100) * CIRCUMFERENCE
+  const angle = (progress / 100) * Math.PI * 2 - Math.PI / 2
+  const capX = 48 + RADIUS * Math.cos(angle)
+  const capY = 48 + RADIUS * Math.sin(angle)
 
   return (
     <div
@@ -91,13 +94,8 @@ export default function PremiumLoader() {
               strokeDasharray={CIRCUMFERENCE}
               strokeDashoffset={offset}
             />
+            <circle className="site-loader-cap" cx={capX} cy={capY} r="3.15" />
           </svg>
-          <span
-            className="site-loader-cap"
-            style={{ transform: `rotate(${progress * 3.6}deg)` }}
-          >
-            <i />
-          </span>
           <span className="site-loader-count">{progress}</span>
         </div>
 

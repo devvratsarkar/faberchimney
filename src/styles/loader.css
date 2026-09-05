@@ -68,21 +68,17 @@ html.is-loading body {
   animation: site-loader-dial 0.9s var(--loader-ease) both;
 }
 
-.site-loader-dial svg,
-.site-loader-cap {
+.site-loader-dial svg {
   grid-area: 1 / 1;
+  display: block;
   width: 100%;
   height: 100%;
-}
-
-.site-loader-dial svg {
-  display: block;
 }
 
 .site-loader-track,
 .site-loader-value {
   fill: none;
-  stroke-width: 1.75;
+  stroke-width: 2.25;
 }
 
 .site-loader-track {
@@ -97,20 +93,7 @@ html.is-loading body {
 }
 
 .site-loader-cap {
-  display: block;
-  pointer-events: none;
-}
-
-.site-loader-cap i {
-  position: absolute;
-  top: 4px;
-  left: 50%;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  box-shadow: 0 0 0 3px var(--color-cream);
-  transform: translateX(-50%);
+  fill: var(--color-accent);
 }
 
 .site-loader-count {
@@ -120,7 +103,8 @@ html.is-loading body {
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.03em;
   line-height: 1;
-  animation: site-loader-count 0.7s var(--loader-ease) 180ms both;
+  color: var(--color-primary);
+  animation: site-loader-count 0.7s var(--loader-ease) 80ms both;
 }
 
 .site-loader-name {
@@ -135,8 +119,8 @@ html.is-loading body {
 
 .site-loader-name span {
   display: inline-block;
-  animation: site-loader-letter 0.86s var(--loader-ease) both;
-  animation-delay: calc(220ms + var(--i) * 75ms);
+  animation: site-loader-letter 0.62s var(--loader-ease) both;
+  animation-delay: calc(60ms + var(--i) * 42ms);
 }
 
 .site-loader-tag {
@@ -146,7 +130,7 @@ html.is-loading body {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--color-secondary);
-  animation: site-loader-tag 0.85s var(--loader-ease) 560ms both;
+  animation: site-loader-tag 0.7s var(--loader-ease) 320ms both;
 }
 
 @keyframes site-loader-wash {

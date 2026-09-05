@@ -7,6 +7,8 @@
 @import "./home-gallery.css";
 @import "./home-reviews.css";
 @import "./whatsapp-float.css";
+@import "./offcanvas.css";
+@import "./footer.css";
 
 @theme {
   --color-primary: #17254b;

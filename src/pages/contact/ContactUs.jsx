@@ -71,7 +71,7 @@ export default function ContactUsPage() {
             </div>
             <div className="overflow-hidden rounded-3xl bg-white">
               <iframe
-                title="Faber Chimney map"
+                title="Faber Chimney service area in Kolkata"
                 src={site.mapSrc}
                 className="h-56 w-full"
                 loading="lazy"

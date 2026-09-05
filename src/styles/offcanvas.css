@@ -1,0 +1,76 @@
+.offcanvas-root {
+  display: none;
+}
+
+@media (max-width: 1279px) {
+  .offcanvas-root {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+  }
+
+  .offcanvas-root.is-open {
+    pointer-events: auto;
+  }
+
+  .offcanvas-backdrop {
+    position: absolute;
+    inset: 0;
+    border: 0;
+    padding: 0;
+    background: rgb(5 11 23 / 0.46);
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    transition:
+      opacity 320ms ease,
+      visibility 320ms ease;
+  }
+
+  .offcanvas-root.is-open .offcanvas-backdrop {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .offcanvas-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    width: min(100%, 24.5rem);
+    height: 100dvh;
+    height: 100svh;
+    background: #fff;
+    box-shadow: -18px 0 48px rgb(7 25 54 / 0.18);
+    transform: translateX(100%);
+    visibility: hidden;
+    overflow: hidden;
+    transition:
+      transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 360ms linear;
+  }
+
+  .offcanvas-root.is-open .offcanvas-panel {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .offcanvas-body {
+    flex: 1;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding:
+      1.15rem 1.15rem
+      max(1.35rem, env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .offcanvas-backdrop,
+  .offcanvas-panel {
+    transition: none !important;
+  }
+}

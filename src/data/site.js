@@ -9,10 +9,13 @@ export const site = {
     'https://wa.me/919433836383?text=Hello%2C%20I%20need%20chimney%20repair%20service.',
   email: 'hello@faberchimney.com',
   emailHref: 'mailto:hello@faberchimney.com',
-  address: 'Delhi, India',
+  address: 'Kolkata, West Bengal, India',
+  city: 'Kolkata',
   hours: 'Mon – Sun, 8:00 AM – 8:00 PM',
   mapSrc:
-    'https://www.google.com/maps?q=Delhi&output=embed',
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117925.21689716063!2d88.26495055!3d22.5354074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0277a10b366523%3A0x71fbada7069ff237!2sKolkata%2C%20West%20Bengal!5e0!3m2!1sen!2sin',
+  mapDirectionsHref:
+    'https://www.google.com/maps/search/?api=1&query=Kolkata,+West+Bengal,+India',
 }
 
 export const navLinks = [
@@ -38,7 +41,7 @@ export const heroSlides = [
     eyebrow: 'Professional Service',
     title: 'Same-Day',
     highlight: 'Home Visit',
-    badge: 'In Delhi',
+    badge: 'In Kolkata',
     description:
       'A trained technician arrives with the right tools and repairs only what is needed.',
   },

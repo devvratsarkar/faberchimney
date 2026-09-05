@@ -1,12 +1,17 @@
 import { NavLink } from 'react-router-dom'
 import { navLinks } from '../../../data/site.js'
 
-export default function PrimaryMenu({ onNavigate, className = '', variant = 'desktop' }) {
+export default function PrimaryMenu({
+  onNavigate,
+  className = '',
+  variant = 'desktop',
+  links = navLinks,
+}) {
   const isDesktop = variant === 'desktop'
 
   return (
     <nav className={className} aria-label="Primary">
-      {navLinks.map((link) => (
+      {links.map((link) => (
         <NavLink
           key={link.path}
           to={link.path}
@@ -17,7 +22,7 @@ export default function PrimaryMenu({ onNavigate, className = '', variant = 'des
               'relative font-semibold tracking-[0.14em] uppercase transition',
               isDesktop
                 ? 'px-4 py-2.5 text-[12px]'
-                : 'rounded-xl px-4 py-3 text-sm',
+                : 'rounded-full px-5 py-3.5 text-sm',
               isActive
                 ? isDesktop
                   ? 'text-secondary after:absolute after:right-4 after:bottom-1 after:left-4 after:h-0.5 after:bg-secondary'

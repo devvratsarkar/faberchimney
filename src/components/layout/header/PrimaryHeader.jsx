@@ -1,14 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { site } from '../../../data/site.js'
-import { FaWhatsapp } from 'react-icons/fa'
-import { LuArrowUpRight, LuMenu, LuPhone, LuX } from 'react-icons/lu'
+import { LuArrowUpRight, LuMenu, LuPhone } from 'react-icons/lu'
+import OffcanvasMenu from './OffcanvasMenu.jsx'
 import PrimaryMenu from './PrimaryMenu.jsx'
 import TopToolbar from './TopToolbar.jsx'
 
 export default function PrimaryHeader() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const closeMenu = useCallback(() => setOpen(false), [])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -34,7 +35,7 @@ export default function PrimaryHeader() {
         }`}
       >
         <div className="custom_container flex items-center justify-between gap-4 py-3 lg:py-3.5">
-          <Link to="/" className="shrink-0 leading-none" onClick={() => setOpen(false)}>
+          <Link to="/" className="shrink-0 leading-none" onClick={closeMenu}>
             <span className="font-display block text-[22px] font-bold tracking-tight text-primary">
               Faber
             </span>
@@ -63,6 +64,7 @@ export default function PrimaryHeader() {
 
             <Link
               to="/contact"
+              onClick={closeMenu}
               className="inline-flex items-center gap-2 rounded-full bg-secondary px-3.5 py-2.5 text-[11px] font-bold tracking-[0.12em] text-white uppercase shadow-[0_10px_22px_rgba(228,0,20,0.28)] transition hover:-translate-y-0.5 hover:bg-primary sm:px-5 sm:py-3 sm:text-[12px] sm:tracking-[0.14em]"
             >
               <span className="hidden sm:inline">Book Repair</span>
@@ -73,57 +75,18 @@ export default function PrimaryHeader() {
             <button
               type="button"
               className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/10 text-primary xl:hidden"
-              aria-label={open ? 'Close menu' : 'Open menu'}
-              onClick={() => setOpen((value) => !value)}
+              aria-label="Open menu"
+              aria-expanded={open}
+              aria-controls="mobile-offcanvas"
+              onClick={() => setOpen(true)}
             >
-              {open ? <LuX className="size-6" /> : <LuMenu className="size-6" />}
+              <LuMenu className="size-6" />
             </button>
           </div>
         </div>
-
-        {open ? (
-          <div className="border-t border-black/5 bg-white px-4 py-5 xl:hidden">
-            <PrimaryMenu
-              variant="mobile"
-              onNavigate={() => setOpen(false)}
-              className="flex flex-col gap-1"
-            />
-            <Link
-              to="/contact"
-              onClick={() => setOpen(false)}
-              className="mt-1 rounded-xl px-4 py-3 text-sm font-semibold tracking-[0.14em] text-primary uppercase hover:bg-cream"
-            >
-              Contact
-            </Link>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              <a
-                href={site.phoneHref}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-primary/10 px-4 py-3 text-sm font-bold text-primary"
-              >
-                <LuPhone className="size-4" />
-                {site.phone}
-              </a>
-              <a
-                href={site.whatsappHref}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-primary/10 px-4 py-3 text-sm font-bold text-primary"
-              >
-                <FaWhatsapp className="size-4 text-[#25D366]" />
-                {site.whatsapp}
-              </a>
-              <Link
-                to="/contact"
-                onClick={() => setOpen(false)}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-secondary px-4 py-3 text-sm font-bold text-white sm:col-span-2"
-              >
-                Book Repair
-                <LuArrowUpRight className="size-4" />
-              </Link>
-            </div>
-          </div>
-        ) : null}
       </div>
+
+      <OffcanvasMenu open={open} onClose={closeMenu} />
     </header>
   )
 }
