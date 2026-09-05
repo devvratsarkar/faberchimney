@@ -3,6 +3,7 @@
 @import "./banner.css";
 @import "./home-about.css";
 @import "./home-services.css";
+@import "./home-gallery.css";
 
 @theme {
   --color-primary: #17254b;

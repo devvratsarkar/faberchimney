@@ -179,6 +179,22 @@ export function ChipIcon({ className = 'size-4', strokeWidth = 1.8 }) {
   )
 }
 
+export function SearchIcon({ className = 'size-4', strokeWidth = 1.8 }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth={strokeWidth} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-4.35-4.35M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z" />
+    </svg>
+  )
+}
+
+export function ExpandIcon({ className = 'size-4', strokeWidth = 1.8 }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth={strokeWidth} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 9V3.75H9M3.75 3.75 9 9M20.25 9V3.75H15M20.25 3.75 15 9M3.75 15v5.25H9M3.75 20.25 9 15M20.25 15v5.25H15M20.25 20.25 15 15" />
+    </svg>
+  )
+}
+
 export function WhatsAppIcon({ className = 'size-4' }) {
   return (
     <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">

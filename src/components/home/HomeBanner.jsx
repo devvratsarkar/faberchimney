@@ -75,7 +75,8 @@ export default function HomeBanner() {
           })}
         </div>
 
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(5,11,23,0.62)_0%,rgba(5,11,23,0.28)_38%,rgba(5,11,23,0.08)_68%,transparent_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(105deg,rgba(5,11,23,0.88)_0%,rgba(23,37,75,0.72)_42%,rgba(23,37,75,0.38)_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(5,11,23,0.45)_100%)]" />
 
         <div className="banner-outline hidden sm:block">
           <span className="banner-outline-line" />
