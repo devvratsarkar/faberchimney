@@ -10,18 +10,14 @@ export function getServicesPageRoute() {
   return `/services`
 }
 
-export function getServiceDetailPageRoute(slug = ':slug') {
-  return `/services/${slug}`
+export function getGalleryPageRoute() {
+  return `/gallery`
+}
+
+export function getTestimonialsPageRoute() {
+  return `/testimonials`
 }
 
 export function getContactPageRoute() {
   return `/contact`
-}
-
-export function getQuotePageRoute() {
-  return `/get-a-quote`
-}
-
-export function getBlogPageRoute() {
-  return `/blog`
 }

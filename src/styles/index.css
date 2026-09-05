@@ -1,9 +1,15 @@
 @import "tailwindcss";
 @import "./common.css";
+@import "./banner.css";
+@import "./home-about.css";
 
 @theme {
-  --color-primary: #184734;
-  --color-secondary: #5C8019;
+  --color-primary: #17254b;
+  --color-secondary: #e40014;
+  --color-accent: #fe6e00;
+  --color-navy: #071936;
+  --color-navy-deep: #050b17;
+  --color-cream: #f7f8fa;
   --color-black: #000000;
   --color-white: #ffffff;
   --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
@@ -18,4 +24,11 @@ body {
   margin: 0;
   min-width: 320px;
   color: var(--color-black);
+}
+
+button,
+[type="button"],
+[type="submit"],
+[type="reset"] {
+  cursor: pointer;
 }

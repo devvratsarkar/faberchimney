@@ -1,19 +1,18 @@
 import MainLayout from '../components/layout/MainLayout.jsx'
-import HomePage from '../pages/home/Home'
-import AboutUsPage from '../pages/about/AboutUs'
-import ServicesPage from '../pages/services/Services'
-import ServiceDetailPage from '../pages/services/ServiceDetail'
-import ContactUsPage from '../pages/contact/ContactUs'
-import GetAQuotePage from '../pages/quote/GetAQuote'
-import BlogPage from '../pages/blog/Blog'
+import HomePage from '../pages/home/Home.jsx'
+import AboutUsPage from '../pages/about/AboutUs.jsx'
+import ServicesPage from '../pages/services/Services.jsx'
+import GalleryPage from '../pages/gallery/Gallery.jsx'
+import TestimonialsPage from '../pages/testimonials/Testimonials.jsx'
+import ContactUsPage from '../pages/contact/ContactUs.jsx'
+import NotFoundPage from '../pages/not-found/NotFound.jsx'
 import {
   getAboutPageRoute,
-  getBlogPageRoute,
   getContactPageRoute,
+  getGalleryPageRoute,
   getHomePageRoute,
-  getQuotePageRoute,
-  getServiceDetailPageRoute,
   getServicesPageRoute,
+  getTestimonialsPageRoute,
 } from './routes'
 
 export const RouterData = [
@@ -33,20 +32,20 @@ export const RouterData = [
         element: <ServicesPage />,
       },
       {
-        path: getServiceDetailPageRoute(),
-        element: <ServiceDetailPage />,
+        path: getGalleryPageRoute(),
+        element: <GalleryPage />,
+      },
+      {
+        path: getTestimonialsPageRoute(),
+        element: <TestimonialsPage />,
       },
       {
         path: getContactPageRoute(),
         element: <ContactUsPage />,
       },
       {
-        path: getQuotePageRoute(),
-        element: <GetAQuotePage />,
-      },
-      {
-        path: getBlogPageRoute(),
-        element: <BlogPage />,
+        path: '*',
+        element: <NotFoundPage />,
       },
     ],
   },
