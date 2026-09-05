@@ -2,10 +2,18 @@ import { useEffect, useState } from 'react'
 import { site } from '../../data/site.js'
 
 const LETTERS = ['F', 'a', 'b', 'e', 'r']
-const MIN_MS = 2200
-const EXIT_MS = 560
+const LOAD_MS = 2100
+const HOLD_MS = 260
+const EXIT_MS = 620
+const RADIUS = 38
+const CIRCUMFERENCE = 2 * Math.PI * RADIUS
+
+function easeOutCubic(t) {
+  return 1 - (1 - t) ** 3
+}
 
 export default function PremiumLoader() {
+  const [progress, setProgress] = useState(0)
   const [phase, setPhase] = useState('loading')
 
   useEffect(() => {
@@ -19,16 +27,22 @@ export default function PremiumLoader() {
       return undefined
     }
 
-    let cancelled = false
-    const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms))
-    const fonts = document.fonts?.ready ?? Promise.resolve()
+    let start
+    let hold
+    const timer = window.setInterval(() => {
+      if (!start) start = performance.now()
+      const t = Math.min(1, (performance.now() - start) / LOAD_MS)
+      setProgress(Math.round(easeOutCubic(t) * 100))
 
-    Promise.all([wait(MIN_MS), fonts]).then(() => {
-      if (!cancelled) setPhase('exiting')
-    })
+      if (t >= 1) {
+        window.clearInterval(timer)
+        hold = window.setTimeout(() => setPhase('exiting'), HOLD_MS)
+      }
+    }, 16)
 
     return () => {
-      cancelled = true
+      window.clearInterval(timer)
+      window.clearTimeout(hold)
       root.classList.remove('is-loading')
     }
   }, [])
@@ -44,17 +58,49 @@ export default function PremiumLoader() {
 
   if (phase === 'gone') return null
 
+  const offset = CIRCUMFERENCE - (progress / 100) * CIRCUMFERENCE
+
   return (
     <div
       className={`site-loader${phase === 'exiting' ? ' is-exiting' : ''}`}
-      role="status"
-      aria-live="polite"
-      aria-busy={phase === 'loading'}
+      style={{ '--loader-p': progress / 100 }}
+      role="progressbar"
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-valuenow={progress}
       aria-label={`${site.name} is loading`}
     >
+      <div className="site-loader-wash" aria-hidden="true" />
       <div className="site-loader-bar" aria-hidden="true" />
 
       <div className="site-loader-brand">
+        <div className="site-loader-dial">
+          <svg viewBox="0 0 96 96" aria-hidden="true">
+            <defs>
+              <linearGradient id="site-loader-grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="#e40014" />
+                <stop offset="100%" stopColor="#fe6e00" />
+              </linearGradient>
+            </defs>
+            <circle className="site-loader-track" cx="48" cy="48" r={RADIUS} />
+            <circle
+              className="site-loader-value"
+              cx="48"
+              cy="48"
+              r={RADIUS}
+              strokeDasharray={CIRCUMFERENCE}
+              strokeDashoffset={offset}
+            />
+          </svg>
+          <span
+            className="site-loader-cap"
+            style={{ transform: `rotate(${progress * 3.6}deg)` }}
+          >
+            <i />
+          </span>
+          <span className="site-loader-count">{progress}</span>
+        </div>
+
         <p className="site-loader-name" aria-label="Faber">
           {LETTERS.map((letter, index) => (
             <span key={letter} style={{ '--i': index }}>
@@ -63,9 +109,6 @@ export default function PremiumLoader() {
           ))}
         </p>
         <p className="site-loader-tag">Chimney Repair</p>
-        <span className="site-loader-track" aria-hidden="true">
-          <span className="site-loader-fill" />
-        </span>
       </div>
     </div>
   )
