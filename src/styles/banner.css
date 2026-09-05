@@ -229,10 +229,6 @@
   outline: none;
 }
 
-.banner-is-paused .banner-progress {
-  animation-play-state: paused;
-}
-
 @keyframes banner-fade {
   from { opacity: 0; }
   to { opacity: 1; }

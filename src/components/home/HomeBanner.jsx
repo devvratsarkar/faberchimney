@@ -27,7 +27,6 @@ const SLIDE_MS = 7000
 export default function HomeBanner() {
   const swiperRef = useRef(null)
   const [index, setIndex] = useState(0)
-  const [paused, setPaused] = useState(false)
   const slide = heroSlides[index]
   const slideNo = String(index + 1).padStart(2, '0')
 
@@ -53,17 +52,7 @@ export default function HomeBanner() {
   }
 
   return (
-    <section
-      className={`banner-stage relative overflow-hidden bg-navy ${paused ? 'banner-is-paused' : ''}`}
-      onMouseEnter={() => {
-        setPaused(true)
-        swiperRef.current?.autoplay?.pause()
-      }}
-      onMouseLeave={() => {
-        setPaused(false)
-        swiperRef.current?.autoplay?.resume()
-      }}
-    >
+    <section className="banner-stage relative overflow-hidden bg-navy">
       <Swiper
         modules={[Autoplay, EffectFade, Keyboard]}
         effect="fade"
@@ -77,6 +66,7 @@ export default function HomeBanner() {
         autoplay={{
           delay: SLIDE_MS,
           disableOnInteraction: false,
+          pauseOnMouseEnter: false,
         }}
         onSwiper={(swiper) => {
           swiperRef.current = swiper

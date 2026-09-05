@@ -13,39 +13,29 @@ export default function PrimaryHeader() {
   const closeMenu = useCallback(() => setOpen(false), [])
 
   useEffect(() => {
-    let current = window.scrollY > 24
-    let ticking = false
-
-    const update = () => {
-      const y = window.scrollY
-      const next = current ? y > 8 : y > 24
-      if (next !== current) {
-        current = next
-        setScrolled(next)
-      }
-      ticking = false
-    }
-
-    const onScroll = () => {
-      if (ticking) return
-      ticking = true
-      window.requestAnimationFrame(update)
-    }
-
-    setScrolled(current)
+    const onScroll = () => setScrolled(window.scrollY > 12)
+    onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   return (
-    <>
-      <div className="header-top">
-        <div className="h-[3px] bg-linear-to-r from-secondary via-accent to-secondary" />
+    <header className="sticky top-0 z-50 w-full overflow-x-clip">
+      <div className="h-[3px] bg-linear-to-r from-secondary via-accent to-secondary" />
+      <div
+        className={`overflow-hidden transition-all duration-300 ${
+          scrolled ? 'max-h-0 opacity-0' : 'max-h-12 opacity-100'
+        }`}
+      >
         <TopToolbar />
       </div>
 
-      <div className={`header-bar${scrolled ? ' is-scrolled' : ''}`}>
-        <div className="header-bar-inner custom_container">
+      <div
+        className={`w-full border-b border-black/10 bg-white/95 backdrop-blur-xl transition-shadow duration-300 ${
+          scrolled ? 'shadow-[0_12px_36px_rgba(23,37,75,0.08)]' : ''
+        }`}
+      >
+        <div className="custom_container flex w-full items-center justify-between gap-3 py-3 lg:gap-6 lg:py-3.5">
           <SiteLogo onClick={closeMenu} />
 
           <PrimaryMenu variant="desktop" className="header-nav hidden xl:flex" />
@@ -68,7 +58,7 @@ export default function PrimaryHeader() {
             <Link
               to="/contact"
               onClick={closeMenu}
-              className="hidden items-center gap-2 rounded-full bg-secondary px-5 py-3 text-[12px] font-bold tracking-[0.14em] text-white uppercase shadow-[0_10px_22px_rgba(228,0,20,0.28)] transition hover:-translate-y-0.5 hover:bg-primary xl:inline-flex"
+              className="hidden items-center gap-2 rounded-full bg-secondary px-5 py-3 text-[12px] font-bold tracking-[0.14em] text-white uppercase shadow-[0_10px_22px_rgba(228,0,20,0.28)] transition hover:bg-primary xl:inline-flex"
             >
               Book Repair
               <LuArrowUpRight className="size-4" />
@@ -89,6 +79,6 @@ export default function PrimaryHeader() {
       </div>
 
       <OffcanvasMenu open={open} onClose={closeMenu} />
-    </>
+    </header>
   )
 }
