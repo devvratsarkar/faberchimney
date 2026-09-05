@@ -8,6 +8,7 @@ import {
   LuPhone,
 } from 'react-icons/lu'
 import { navLinks, services, site } from '../../../data/site.js'
+import SiteLogo from '../../ui/SiteLogo.jsx'
 
 const footerLinks = [...navLinks, { name: 'Contact', path: '/contact' }]
 
@@ -41,10 +42,7 @@ export default function PrimaryFooter() {
       <div className="custom_container footer-main">
         <div className="footer-grid">
           <div className="footer-brand">
-            <Link to="/" className="footer-logo">
-              <span className="footer-logo-name">Faber</span>
-              <span className="footer-logo-tag">Chimney Repair</span>
-            </Link>
+            <SiteLogo inverted />
             <p className="footer-brand-copy">
               Professional kitchen chimney repair, cleaning and maintenance across Kolkata.
               Trained technicians, same-day visits and honest repair work.

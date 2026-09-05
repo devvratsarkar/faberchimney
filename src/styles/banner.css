@@ -139,43 +139,21 @@
 .banner-feature:nth-child(2) { animation-delay: 480ms; }
 .banner-feature:nth-child(3) { animation-delay: 560ms; }
 
-.banner-track {
+.banner-swiper.swiper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   z-index: 0;
 }
 
-.banner-slide {
-  opacity: 0;
-  visibility: hidden;
-  transform: translate3d(2.4%, 0, 0) scale(1.04);
-  transition:
-    opacity 1.7s cubic-bezier(0.37, 0, 0.63, 1),
-    transform 1.9s cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 1.7s;
-}
-
-.banner-stage[data-direction="-1"] .banner-slide {
-  transform: translate3d(-2.4%, 0, 0) scale(1.04);
-}
-
-.banner-slide.is-active {
-  z-index: 2;
-  opacity: 1;
-  visibility: visible;
-  transform: translate3d(0, 0, 0) scale(1);
-}
-
-.banner-slide.is-leaving {
-  z-index: 1;
-  opacity: 0;
-  visibility: visible;
-  transform: translate3d(-2%, 0, 0) scale(1.08);
-}
-
-.banner-stage[data-direction="-1"] .banner-slide.is-leaving {
-  transform: translate3d(2%, 0, 0) scale(1.08);
+.banner-swiper .swiper-slide {
+  height: 100%;
 }
 
 .banner-image {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -183,14 +161,8 @@
   transition: transform 8.5s linear;
 }
 
-.banner-slide.is-active .banner-image {
+.swiper-slide-active .banner-image {
   transform: scale(1.06);
-}
-
-.banner-slide.is-leaving .banner-image {
-  transform: scale(1.08);
-  transition-duration: 1.7s;
-  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .banner-progress {
@@ -242,10 +214,19 @@
 }
 
 .banner-control {
+  pointer-events: auto;
   transition:
     background-color 400ms var(--banner-ease),
     color 400ms var(--banner-ease),
     border-color 400ms var(--banner-ease);
+}
+
+.banner-control:hover,
+.banner-control:focus-visible {
+  background: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: #ffffff;
+  outline: none;
 }
 
 .banner-is-paused .banner-progress {
@@ -341,20 +322,10 @@
     animation: none !important;
   }
 
-  .banner-slide,
-  .banner-slide.is-active .banner-image,
-  .banner-slide.is-leaving .banner-image {
-    transition: opacity 200ms ease !important;
-    transform: none !important;
-  }
-
-  .banner-slide.is-active {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .banner-image {
+  .banner-image,
+  .swiper-slide-active .banner-image {
     transform: none;
     filter: none;
+    transition: none !important;
   }
 }

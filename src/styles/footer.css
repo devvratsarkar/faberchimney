@@ -108,31 +108,6 @@
   gap: 2.25rem 1.75rem;
 }
 
-.footer-logo {
-  display: inline-block;
-  line-height: 1;
-  text-decoration: none;
-}
-
-.footer-logo-name {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 1.55rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #fff;
-}
-
-.footer-logo-tag {
-  display: block;
-  margin-top: 0.4rem;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--color-secondary);
-}
-
 .footer-brand-copy {
   max-width: 22rem;
   margin: 1.15rem 0 0;

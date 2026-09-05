@@ -2,8 +2,9 @@ import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { Link } from 'react-router-dom'
 import { FaWhatsapp } from 'react-icons/fa'
-import { LuArrowUpRight, LuPhone, LuX } from 'react-icons/lu'
+import { LuArrowUpRight, LuClock, LuMapPin, LuPhone, LuX } from 'react-icons/lu'
 import { navLinks, site } from '../../../data/site.js'
+import SiteLogo from '../../ui/SiteLogo.jsx'
 import PrimaryMenu from './PrimaryMenu.jsx'
 
 const offcanvasLinks = [...navLinks, { name: 'Contact', path: '/contact' }]
@@ -51,72 +52,67 @@ export default function OffcanvasMenu({ open, onClose }) {
         aria-label="Site menu"
         aria-hidden={!open}
       >
-        <div className="h-[3px] bg-linear-to-r from-secondary via-accent to-secondary" />
+        <div className="h-0.75 bg-linear-to-r from-secondary via-accent to-secondary" />
 
-        <div className="flex items-center justify-between gap-3 border-b border-black/5 px-4 py-3">
-          <Link to="/" className="shrink-0 leading-none" onClick={onClose}>
-            <span className="font-display block text-[22px] font-bold tracking-tight text-primary">
-              Faber
-            </span>
-            <span className="mt-0.5 block text-[11px] font-bold tracking-[0.22em] text-secondary uppercase">
-              Chimney Repair
-            </span>
-          </Link>
-
-          <div className="flex items-center gap-2.5">
-            <Link
-              to="/contact"
-              onClick={onClose}
-              className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3.5 py-2.5 text-[11px] font-bold tracking-[0.12em] text-white uppercase shadow-[0_10px_22px_rgba(228,0,20,0.28)]"
-            >
-              Book
-              <LuArrowUpRight className="size-3.5" />
-            </Link>
-            <button
-              type="button"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/10 text-primary"
-              aria-label="Close menu"
-              onClick={onClose}
-            >
-              <LuX className="size-6" />
-            </button>
-          </div>
+        <div className="offcanvas-head">
+          <SiteLogo compact onClick={onClose} />
+          <button
+            type="button"
+            className="offcanvas-close"
+            aria-label="Close menu"
+            onClick={onClose}
+          >
+            <LuX className="size-6" />
+          </button>
         </div>
 
         <div className="offcanvas-body">
+          <p className="offcanvas-kicker">Menu</p>
           <PrimaryMenu
             variant="mobile"
             links={offcanvasLinks}
             onNavigate={onClose}
-            className="flex flex-col gap-1"
+            className="offcanvas-nav"
           />
+        </div>
 
-          <div className="mt-5 flex flex-col gap-3">
-            <a
-              href={site.phoneHref}
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-black/10 px-4 py-3 text-sm font-bold text-primary"
-            >
+        <div className="offcanvas-foot">
+          <a href={site.phoneHref} className="offcanvas-contact">
+            <span className="offcanvas-contact-icon">
               <LuPhone className="size-4" />
-              {site.phone}
-            </a>
-            <a
-              href={site.whatsappHref}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-black/10 px-4 py-3 text-sm font-bold text-primary"
-            >
-              <FaWhatsapp className="size-4 text-[#25D366]" />
-              {site.whatsapp}
-            </a>
-            <Link
-              to="/contact"
-              onClick={onClose}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-secondary px-4 py-3 text-sm font-bold text-white shadow-[0_10px_22px_rgba(228,0,20,0.28)]"
-            >
-              Book Repair
-              <LuArrowUpRight className="size-4" />
-            </Link>
-          </div>
+            </span>
+            <span>
+              <span className="offcanvas-contact-label">Call us</span>
+              <span className="offcanvas-contact-value">{site.phone}</span>
+            </span>
+          </a>
+          <a
+            href={site.whatsappHref}
+            target="_blank"
+            rel="noreferrer"
+            className="offcanvas-contact"
+          >
+            <span className="offcanvas-contact-icon is-whatsapp">
+              <FaWhatsapp className="size-4" />
+            </span>
+            <span>
+              <span className="offcanvas-contact-label">WhatsApp</span>
+              <span className="offcanvas-contact-value">{site.whatsapp}</span>
+            </span>
+          </a>
+
+          <Link to="/contact" onClick={onClose} className="offcanvas-cta">
+            Book Repair
+            <LuArrowUpRight className="size-4" />
+          </Link>
+
+          <p className="offcanvas-meta">
+            <LuMapPin className="size-3.5" />
+            {site.city}
+            <span />
+            <LuClock className="size-3.5" />
+            {site.hours}
+          </p>
         </div>
       </div>
     </div>,

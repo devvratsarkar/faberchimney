@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import { LuChevronRight } from 'react-icons/lu'
 import { navLinks } from '../../../data/site.js'
 
 export default function PrimaryMenu({
@@ -11,29 +12,27 @@ export default function PrimaryMenu({
 
   return (
     <nav className={className} aria-label="Primary">
-      {links.map((link) => (
+      {links.map((link, index) => (
         <NavLink
           key={link.path}
           to={link.path}
           end={link.path === '/'}
           onClick={onNavigate}
           className={({ isActive }) =>
-            [
-              'relative font-semibold tracking-[0.14em] uppercase transition',
-              isDesktop
-                ? 'px-4 py-2.5 text-[12px]'
-                : 'rounded-full px-5 py-3.5 text-sm',
-              isActive
-                ? isDesktop
-                  ? 'text-secondary after:absolute after:right-4 after:bottom-1 after:left-4 after:h-0.5 after:bg-secondary'
-                  : 'bg-primary text-white'
-                : isDesktop
-                  ? 'text-primary hover:text-secondary'
-                  : 'text-primary hover:bg-cream',
-            ].join(' ')
+            isDesktop
+              ? `header-nav-link${isActive ? ' is-active' : ''}`
+              : `offcanvas-nav-link${isActive ? ' is-active' : ''}`
           }
         >
-          {link.name}
+          {isDesktop ? (
+            link.name
+          ) : (
+            <>
+              <span className="offcanvas-nav-index">{String(index + 1).padStart(2, '0')}</span>
+              <span className="offcanvas-nav-label">{link.name}</span>
+              <LuChevronRight className="offcanvas-nav-arrow" />
+            </>
+          )}
         </NavLink>
       ))}
     </nav>
