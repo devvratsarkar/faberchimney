@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import PageHero from '../../components/ui/PageHero.jsx'
-import { CheckIcon } from '../../components/ui/AllSVG.jsx'
+import { LuCheck } from 'react-icons/lu'
 import { services } from '../../data/site.js'
 
 export default function ServicesPage() {
@@ -28,7 +28,7 @@ export default function ServicesPage() {
               <ul className="mt-5 space-y-2">
                 {service.points.map((point) => (
                   <li key={point} className="flex items-start gap-2 text-sm text-black/70">
-                    <CheckIcon className="mt-0.5 size-4 shrink-0 text-secondary" />
+                    <LuCheck className="mt-0.5 size-4 shrink-0 text-secondary" />
                     {point}
                   </li>
                 ))}

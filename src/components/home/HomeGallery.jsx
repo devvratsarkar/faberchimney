@@ -1,13 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { galleryItems } from '../../data/site.js'
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  CloseIcon,
-  ExpandIcon,
-  SearchIcon,
-} from '../ui/AllSVG.jsx'
+import { LuChevronLeft, LuChevronRight, LuExpand, LuSearch, LuX } from 'react-icons/lu'
 
 export default function HomeGallery() {
   const [active, setActive] = useState(null)
@@ -68,13 +62,13 @@ export default function HomeGallery() {
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 <span className="gallery-tile-zoom" aria-hidden="true">
-                  <SearchIcon className="size-4" />
+                  <LuSearch className="size-4" />
                 </span>
                 <span className="gallery-tile-copy">
                   <span className="gallery-tile-title">{item.title}</span>
                   <span className="gallery-tile-hint">
                     Click to view
-                    <ExpandIcon className="size-3.5" />
+                    <LuExpand className="size-3.5" />
                   </span>
                 </span>
               </button>
@@ -102,7 +96,7 @@ export default function HomeGallery() {
             aria-label="Close gallery"
             onClick={() => setActive(null)}
           >
-            <CloseIcon />
+            <LuX className="size-6" />
           </button>
           <button
             type="button"
@@ -113,7 +107,7 @@ export default function HomeGallery() {
               goTo(active - 1)
             }}
           >
-            <ChevronLeftIcon />
+            <LuChevronLeft className="size-5" />
           </button>
           <figure
             className="gallery-lightbox-frame"
@@ -136,7 +130,7 @@ export default function HomeGallery() {
               goTo(active + 1)
             }}
           >
-            <ChevronRightIcon />
+            <LuChevronRight className="size-5" />
           </button>
         </div>
       ) : null}

@@ -1,23 +1,23 @@
 import { Link } from 'react-router-dom'
 import { services } from '../../data/site.js'
 import {
-  ArrowRightIcon,
-  CheckIcon,
-  ChipIcon,
-  FanIcon,
-  LightbulbIcon,
-  PowerIcon,
-  SpeakerIcon,
-  WrenchIcon,
-} from '../ui/AllSVG.jsx'
+  LuArrowRight,
+  LuCheck,
+  LuCpu,
+  LuFan,
+  LuLightbulb,
+  LuPower,
+  LuVolume2,
+  LuWrench,
+} from 'react-icons/lu'
 
 const serviceIcons = {
-  power: PowerIcon,
-  fan: FanIcon,
-  wrench: WrenchIcon,
-  light: LightbulbIcon,
-  speaker: SpeakerIcon,
-  chip: ChipIcon,
+  power: LuPower,
+  fan: LuFan,
+  wrench: LuWrench,
+  light: LuLightbulb,
+  speaker: LuVolume2,
+  chip: LuCpu,
 }
 
 const servicePromises = [
@@ -63,7 +63,7 @@ export default function HomeServices() {
                     {service.points.map((point) => (
                       <li key={point}>
                         <span className="service-check" aria-hidden="true">
-                          <CheckIcon className="size-3" strokeWidth={2.6} />
+                          <LuCheck className="size-3" strokeWidth={2.6} />
                         </span>
                         {point}
                       </li>
@@ -71,7 +71,7 @@ export default function HomeServices() {
                   </ul>
                   <Link to="/contact" className="service-card-cta">
                     Get Repair Service
-                    <ArrowRightIcon className="size-4" />
+                    <LuArrowRight className="size-4" />
                   </Link>
                 </article>
               </li>
@@ -82,7 +82,7 @@ export default function HomeServices() {
         <div className="services-cta">
           <div className="services-cta-copy">
             <p className="services-cta-kicker">
-              <WrenchIcon className="size-4" strokeWidth={1.8} />
+              <LuWrench className="size-4" strokeWidth={1.8} />
               Need Chimney Repair?
             </p>
             <h3>
@@ -95,7 +95,7 @@ export default function HomeServices() {
           </div>
           <Link to="/contact" className="services-cta-btn">
             <span>Book Repair</span>
-            <ArrowRightIcon className="size-4" />
+            <LuArrowRight className="size-4" />
           </Link>
         </div>
 
@@ -103,7 +103,7 @@ export default function HomeServices() {
           {servicePromises.map((item) => (
             <li key={item}>
               <span aria-hidden="true">
-                <CheckIcon className="size-3" strokeWidth={2.6} />
+                <LuCheck className="size-3" strokeWidth={2.6} />
               </span>
               {item}
             </li>

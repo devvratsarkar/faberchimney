@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import PageHero from '../../components/ui/PageHero.jsx'
-import { CloseIcon } from '../../components/ui/AllSVG.jsx'
+import { LuX } from 'react-icons/lu'
 import { galleryItems } from '../../data/site.js'
 
 export default function GalleryPage() {
@@ -63,7 +63,7 @@ export default function GalleryPage() {
             className="absolute top-4 right-4 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white"
             onClick={() => setActive(null)}
           >
-            <CloseIcon />
+            <LuX className="size-6" />
           </button>
           <img
             src={galleryItems[active].src}

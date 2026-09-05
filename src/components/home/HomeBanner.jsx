@@ -2,19 +2,19 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { heroSlides, highlights, site } from '../../data/site.js'
 import {
-  ArrowRightIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ClockIcon,
-  PhoneIcon,
-  ShieldIcon,
-  WrenchIcon,
-} from '../ui/AllSVG.jsx'
+  LuArrowRight,
+  LuChevronLeft,
+  LuChevronRight,
+  LuClock,
+  LuPhone,
+  LuShield,
+  LuWrench,
+} from 'react-icons/lu'
 
 const highlightIcons = {
-  wrench: WrenchIcon,
-  clock: ClockIcon,
-  shield: ShieldIcon,
+  wrench: LuWrench,
+  clock: LuClock,
+  shield: LuShield,
 }
 
 const SLIDE_MS = 7000
@@ -137,7 +137,7 @@ export default function HomeBanner() {
                 href={site.phoneHref}
                 className="banner-cta inline-flex items-center gap-2 rounded-full bg-secondary px-7 py-3.5 text-[12px] font-bold tracking-[0.14em] text-white uppercase"
               >
-                <PhoneIcon className="size-4" />
+                <LuPhone className="size-4" />
                 <span>Book Service</span>
               </a>
               <Link
@@ -145,7 +145,7 @@ export default function HomeBanner() {
                 className="banner-ghost inline-flex items-center gap-2 rounded-full border border-white/70 bg-white px-7 py-3.5 text-[12px] font-bold tracking-[0.14em] text-primary uppercase"
               >
                 Our Services
-                <ArrowRightIcon className="size-4" />
+                <LuArrowRight className="size-4" />
               </Link>
             </div>
 
@@ -179,7 +179,7 @@ export default function HomeBanner() {
           onClick={() => goTo(index - 1)}
           className="banner-control absolute top-1/2 left-4 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center border border-white/25 text-white md:flex lg:left-20"
         >
-          <ChevronLeftIcon />
+          <LuChevronLeft className="size-5" />
         </button>
         <button
           type="button"
@@ -187,7 +187,7 @@ export default function HomeBanner() {
           onClick={() => goTo(index + 1)}
           className="banner-control absolute top-1/2 right-4 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center border border-white/25 text-white md:flex lg:right-16"
         >
-          <ChevronRightIcon />
+          <LuChevronRight className="size-5" />
         </button>
       </div>
     </section>

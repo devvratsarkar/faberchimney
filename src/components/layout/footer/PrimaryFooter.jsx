@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { navLinks, site } from '../../../data/site.js'
-import { MailIcon, PhoneIcon } from '../../ui/AllSVG.jsx'
+import { LuMail, LuPhone } from 'react-icons/lu'
 
 export default function PrimaryFooter() {
   return (
@@ -16,13 +16,13 @@ export default function PrimaryFooter() {
           <div className="mt-5 space-y-3">
             <a href={site.phoneHref} className="flex items-center gap-3 text-sm text-black/75 hover:text-accent">
               <span className="flex h-9 w-9 items-center justify-center rounded-full bg-cream text-primary">
-                <PhoneIcon />
+                <LuPhone className="size-4" />
               </span>
               {site.phone}
             </a>
             <a href={site.emailHref} className="flex items-center gap-3 text-sm text-black/75 hover:text-accent">
               <span className="flex h-9 w-9 items-center justify-center rounded-full bg-cream text-primary">
-                <MailIcon />
+                <LuMail className="size-4" />
               </span>
               {site.email}
             </a>

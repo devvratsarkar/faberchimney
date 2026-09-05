@@ -1,11 +1,14 @@
 export const site = {
   name: 'Faber Chimney',
-  phone: '+91 90000 00000',
-  phoneHref: 'tel:+919000000000',
+  phone: '+91 85504 63637',
+  phoneHref: 'tel:+918550463637',
+  toolbarPhone: '+91 99337 90508',
+  toolbarPhoneHref: 'tel:+919933790508',
+  whatsapp: '+91 94338 36383',
+  whatsappHref:
+    'https://wa.me/919433836383?text=Hello%2C%20I%20need%20chimney%20repair%20service.',
   email: 'hello@faberchimney.com',
   emailHref: 'mailto:hello@faberchimney.com',
-  whatsappHref:
-    'https://wa.me/919000000000?text=Hello%2C%20I%20need%20chimney%20repair%20service.',
   address: 'Delhi, India',
   hours: 'Mon – Sun, 8:00 AM – 8:00 PM',
   mapSrc:
@@ -139,6 +142,12 @@ export const galleryItems = [
   { src: '/gallery/img5.png', title: 'Chimney Fan Repair' },
   { src: '/gallery/img6.png', title: 'Kitchen Chimney Repair' },
 ]
+
+export const reviewSummary = {
+  rating: '4.9',
+  title: 'Trusted Service',
+  detail: 'By local customers',
+}
 
 export const testimonials = [
   {

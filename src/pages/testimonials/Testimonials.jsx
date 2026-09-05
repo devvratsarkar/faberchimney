@@ -1,5 +1,5 @@
 import PageHero from '../../components/ui/PageHero.jsx'
-import { StarIcon } from '../../components/ui/AllSVG.jsx'
+import { LuStar } from 'react-icons/lu'
 import { testimonials } from '../../data/site.js'
 
 export default function TestimonialsPage() {
@@ -18,7 +18,7 @@ export default function TestimonialsPage() {
             <article key={item.name} className="rounded-3xl bg-white p-6">
               <div className="flex gap-1 text-accent">
                 {Array.from({ length: item.rating }).map((_, index) => (
-                  <StarIcon key={`${item.name}-${index}`} className="size-4" />
+                  <LuStar key={`${item.name}-${index}`} className="size-4 fill-current" />
                 ))}
               </div>
               <p className="mt-4 text-sm leading-7 text-black/65">{item.review}</p>

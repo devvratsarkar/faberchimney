@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import PageHero from '../../components/ui/PageHero.jsx'
-import { LocationIcon, MailIcon, PhoneIcon, WhatsAppIcon } from '../../components/ui/AllSVG.jsx'
+import { FaWhatsapp } from 'react-icons/fa'
+import { LuMail, LuMapPin, LuPhone } from 'react-icons/lu'
 import { site } from '../../data/site.js'
 
 const emptyForm = {
@@ -34,7 +35,7 @@ export default function ContactUsPage() {
           <div className="space-y-4">
             <a href={site.phoneHref} className="flex items-center gap-4 rounded-3xl bg-white p-5">
               <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cream text-secondary">
-                <PhoneIcon className="size-5" />
+                <LuPhone className="size-5" />
               </span>
               <div>
                 <p className="text-xs font-bold tracking-[0.14em] text-black/40 uppercase">Call</p>
@@ -43,7 +44,7 @@ export default function ContactUsPage() {
             </a>
             <a href={site.whatsappHref} className="flex items-center gap-4 rounded-3xl bg-white p-5">
               <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cream text-secondary">
-                <WhatsAppIcon className="size-5" />
+                <FaWhatsapp className="size-5" />
               </span>
               <div>
                 <p className="text-xs font-bold tracking-[0.14em] text-black/40 uppercase">WhatsApp</p>
@@ -52,7 +53,7 @@ export default function ContactUsPage() {
             </a>
             <a href={site.emailHref} className="flex items-center gap-4 rounded-3xl bg-white p-5">
               <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cream text-secondary">
-                <MailIcon className="size-5" />
+                <LuMail className="size-5" />
               </span>
               <div>
                 <p className="text-xs font-bold tracking-[0.14em] text-black/40 uppercase">Email</p>
@@ -61,7 +62,7 @@ export default function ContactUsPage() {
             </a>
             <div className="flex items-center gap-4 rounded-3xl bg-white p-5">
               <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cream text-secondary">
-                <LocationIcon className="size-5" />
+                <LuMapPin className="size-5" />
               </span>
               <div>
                 <p className="text-xs font-bold tracking-[0.14em] text-black/40 uppercase">Location</p>

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { site } from '../../../data/site.js'
-import { ArrowUpRightIcon, CloseIcon, MenuIcon, PhoneIcon } from '../../ui/AllSVG.jsx'
+import { FaWhatsapp } from 'react-icons/fa'
+import { LuArrowUpRight, LuMenu, LuPhone, LuX } from 'react-icons/lu'
 import PrimaryMenu from './PrimaryMenu.jsx'
 import TopToolbar from './TopToolbar.jsx'
 
@@ -50,7 +51,7 @@ export default function PrimaryHeader() {
           <div className="flex items-center gap-3 lg:gap-5">
             <a href={site.phoneHref} className="hidden items-center gap-3 md:inline-flex">
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-secondary/10 text-secondary">
-                <PhoneIcon className="size-5" />
+                <LuPhone className="size-5" />
               </span>
               <span className="leading-tight">
                 <span className="block text-[11px] font-semibold tracking-[0.16em] text-black/40 uppercase">
@@ -66,7 +67,7 @@ export default function PrimaryHeader() {
             >
               <span className="hidden sm:inline">Book Repair</span>
               <span className="sm:hidden">Book</span>
-              <ArrowUpRightIcon className="size-3.5 sm:size-4" />
+              <LuArrowUpRight className="size-3.5 sm:size-4" />
             </Link>
 
             <button
@@ -75,7 +76,7 @@ export default function PrimaryHeader() {
               aria-label={open ? 'Close menu' : 'Open menu'}
               onClick={() => setOpen((value) => !value)}
             >
-              {open ? <CloseIcon /> : <MenuIcon />}
+              {open ? <LuX className="size-6" /> : <LuMenu className="size-6" />}
             </button>
           </div>
         </div>
@@ -99,16 +100,25 @@ export default function PrimaryHeader() {
                 href={site.phoneHref}
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-primary/10 px-4 py-3 text-sm font-bold text-primary"
               >
-                <PhoneIcon className="size-4" />
-                Call Now
+                <LuPhone className="size-4" />
+                {site.phone}
+              </a>
+              <a
+                href={site.whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-primary/10 px-4 py-3 text-sm font-bold text-primary"
+              >
+                <FaWhatsapp className="size-4 text-[#25D366]" />
+                {site.whatsapp}
               </a>
               <Link
                 to="/contact"
                 onClick={() => setOpen(false)}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-secondary px-4 py-3 text-sm font-bold text-white"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-secondary px-4 py-3 text-sm font-bold text-white sm:col-span-2"
               >
                 Book Repair
-                <ArrowUpRightIcon className="size-4" />
+                <LuArrowUpRight className="size-4" />
               </Link>
             </div>
           </div>

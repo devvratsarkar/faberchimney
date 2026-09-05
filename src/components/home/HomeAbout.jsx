@@ -1,27 +1,27 @@
 import { Link } from 'react-router-dom'
 import { aboutFeatures, aboutStats, site } from '../../data/site.js'
 import {
-  ArrowRightIcon,
-  AwardIcon,
-  CheckCircleIcon,
-  CheckIcon,
-  ClockIcon,
-  PhoneIcon,
-  ShieldIcon,
-  UsersIcon,
-  WrenchIcon,
-} from '../ui/AllSVG.jsx'
+  LuArrowRight,
+  LuAward,
+  LuCheck,
+  LuCircleCheck,
+  LuClock,
+  LuPhone,
+  LuShield,
+  LuUsers,
+  LuWrench,
+} from 'react-icons/lu'
 
 const featureIcons = {
-  wrench: WrenchIcon,
-  clock: ClockIcon,
-  shield: ShieldIcon,
+  wrench: LuWrench,
+  clock: LuClock,
+  shield: LuShield,
 }
 
 const statIcons = {
-  users: UsersIcon,
-  wrench: WrenchIcon,
-  check: CheckCircleIcon,
+  users: LuUsers,
+  wrench: LuWrench,
+  check: LuCircleCheck,
 }
 
 function Eyebrow({ children, align = 'start' }) {
@@ -73,7 +73,7 @@ export default function HomeAbout() {
 
               <div className="about-care">
                 <span className="about-care-icon">
-                  <WrenchIcon className="size-4" />
+                  <LuWrench className="size-4" />
                 </span>
                 <div>
                   <p className="about-care-title">Professional Chimney Care</p>
@@ -84,7 +84,7 @@ export default function HomeAbout() {
 
             <aside className="about-years">
               <span className="about-years-icon">
-                <AwardIcon className="size-5" strokeWidth={1.6} />
+                <LuAward className="size-5" strokeWidth={1.6} />
               </span>
               <p>
                 <span className="about-years-value">10+</span>
@@ -121,7 +121,7 @@ export default function HomeAbout() {
                       <p>{feature.text}</p>
                     </div>
                     <span className="about-feature-check" aria-hidden="true">
-                      <CheckIcon className="size-3.5" strokeWidth={2.4} />
+                      <LuCheck className="size-3.5" strokeWidth={2.4} />
                     </span>
                   </li>
                 )
@@ -148,11 +148,11 @@ export default function HomeAbout() {
             <div className="about-actions">
               <Link to="/contact" className="about-cta">
                 <span>Book a Service</span>
-                <ArrowRightIcon className="size-4" />
+                <LuArrowRight className="size-4" />
               </Link>
               <a href={site.phoneHref} className="about-call">
                 <span className="about-call-icon">
-                  <PhoneIcon className="size-4" />
+                  <LuPhone className="size-4" />
                 </span>
                 Call Now
               </a>

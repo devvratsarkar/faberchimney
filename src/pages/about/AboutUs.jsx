@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import PageHero from '../../components/ui/PageHero.jsx'
-import { CheckIcon, PhoneIcon } from '../../components/ui/AllSVG.jsx'
+import { LuCheck, LuPhone } from 'react-icons/lu'
 import { site } from '../../data/site.js'
 
 const points = [
@@ -59,7 +59,7 @@ export default function AboutUsPage() {
               {points.map((point) => (
                 <div key={point.title} className="flex gap-4 rounded-2xl bg-cream p-4">
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-secondary">
-                    <CheckIcon className="size-5" />
+                    <LuCheck className="size-5" />
                   </span>
                   <div>
                     <h3 className="font-bold text-primary">{point.title}</h3>
@@ -73,7 +73,7 @@ export default function AboutUsPage() {
                 href={site.phoneHref}
                 className="inline-flex items-center gap-2 rounded-full bg-secondary px-5 py-3 text-sm font-bold text-white"
               >
-                <PhoneIcon />
+                <LuPhone className="size-4" />
                 Call Now
               </a>
               <Link

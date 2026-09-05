@@ -1,9 +1,12 @@
 @import "tailwindcss";
 @import "./common.css";
+@import "./loader.css";
 @import "./banner.css";
 @import "./home-about.css";
 @import "./home-services.css";
 @import "./home-gallery.css";
+@import "./home-reviews.css";
+@import "./whatsapp-float.css";
 
 @theme {
   --color-primary: #17254b;
