@@ -136,6 +136,49 @@ export function CheckCircleIcon({ className = 'size-4', strokeWidth = 1.8 }) {
   )
 }
 
+export function PowerIcon({ className = 'size-4', strokeWidth = 1.8 }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth={strokeWidth} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M5.636 5.636a9 9 0 1 0 12.728 0M12 3v9" />
+    </svg>
+  )
+}
+
+export function FanIcon({ className = 'size-4', strokeWidth = 1.8 }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth={strokeWidth} aria-hidden="true">
+      <circle cx="12" cy="12" r="1.7" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 10.3c.75-3.55-.35-6.7-2.7-7.2-1.5 2.95-.3 5.85 2.7 7.2ZM13.7 12c3.55-.75 6.7.35 7.2 2.7-2.95 1.5-5.85.3-7.2-2.7ZM12 13.7c-.75 3.55.35 6.7 2.7 7.2 1.5-2.95.3-5.85-2.7-7.2ZM10.3 12c-3.55.75-6.7-.35-7.2-2.7 2.95-1.5 5.85-.3 7.2 2.7Z" />
+    </svg>
+  )
+}
+
+export function LightbulbIcon({ className = 'size-4', strokeWidth = 1.8 }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth={strokeWidth} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-.2c0-.98.66-1.82 1.51-2.31a7.5 7.5 0 1 0-7.52 0c.85.49 1.51 1.33 1.51 2.31V18M9 18h6M10 21h4" />
+    </svg>
+  )
+}
+
+export function SpeakerIcon({ className = 'size-4', strokeWidth = 1.8 }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth={strokeWidth} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 8.25 6 11.25H3.75v1.5H6l3.75 3V8.25Z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M14.6 8.4a4.35 4.35 0 0 1 0 7.2M17.1 6.1a7.2 7.2 0 0 1 0 11.8" />
+    </svg>
+  )
+}
+
+export function ChipIcon({ className = 'size-4', strokeWidth = 1.8 }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth={strokeWidth} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 3v1.5M12 3v1.5M15.75 3v1.5M8.25 19.5V21M12 19.5V21M15.75 19.5V21M3 8.25h1.5M3 12h1.5M3 15.75h1.5M19.5 8.25H21M19.5 12H21M19.5 15.75H21" />
+      <rect x="6.75" y="6.75" width="10.5" height="10.5" rx="1.2" />
+    </svg>
+  )
+}
+
 export function WhatsAppIcon({ className = 'size-4' }) {
   return (
     <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">

@@ -84,6 +84,7 @@ export const services = [
   {
     number: '01',
     title: 'Chimney Not Working',
+    icon: 'power',
     description:
       'Complete inspection and repair when your kitchen chimney stops working or does not turn on.',
     points: ['Power & switch inspection', 'Internal component checking', 'Complete repair solution'],
@@ -91,6 +92,7 @@ export const services = [
   {
     number: '02',
     title: 'Low Suction Problem',
+    icon: 'fan',
     description:
       "We diagnose weak suction and restore your chimney's performance for better smoke removal.",
     points: ['Suction system inspection', 'Fan & airflow checking', 'Performance restoration'],
@@ -98,6 +100,7 @@ export const services = [
   {
     number: '03',
     title: 'Chimney Motor Repair',
+    icon: 'wrench',
     description:
       'Professional diagnosis and repair for slow, noisy or completely non-working chimney motors.',
     points: ['Motor diagnosis', 'Fan mechanism checking', 'Repair & replacement guidance'],
@@ -105,6 +108,7 @@ export const services = [
   {
     number: '04',
     title: 'Chimney Light Problem',
+    icon: 'light',
     description:
       'Fix chimney lights that are not working, flickering or having connection-related problems.',
     points: ['Light connection checking', 'Wiring inspection', 'Component troubleshooting'],
@@ -112,6 +116,7 @@ export const services = [
   {
     number: '05',
     title: 'Noise & Vibration',
+    icon: 'speaker',
     description:
       'Unusual noise or vibration can indicate a motor, fan or internal component problem.',
     points: ['Noise source inspection', 'Fan & motor checking', 'Vibration troubleshooting'],
@@ -119,6 +124,7 @@ export const services = [
   {
     number: '06',
     title: 'Electrical Problem',
+    icon: 'chip',
     description:
       'Professional troubleshooting for chimney switches, wiring and other electrical issues.',
     points: ['Electrical inspection', 'Switch & wiring checking', 'Safe repair solution'],
