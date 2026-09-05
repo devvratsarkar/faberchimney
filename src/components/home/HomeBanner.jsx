@@ -68,6 +68,8 @@ export default function HomeBanner() {
           disableOnInteraction: false,
           pauseOnMouseEnter: false,
         }}
+        allowTouchMove
+        simulateTouch
         onSwiper={(swiper) => {
           swiperRef.current = swiper
         }}
@@ -81,14 +83,18 @@ export default function HomeBanner() {
               alt=""
               fetchPriority={itemIndex === 0 ? 'high' : 'auto'}
               decoding="async"
-              className="banner-image object-cover object-[center_right]"
+              className="banner-image"
             />
           </SwiperSlide>
         ))}
       </Swiper>
 
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(105deg,rgba(5,11,23,0.88)_0%,rgba(23,37,75,0.72)_42%,rgba(23,37,75,0.38)_100%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(5,11,23,0.45)_100%)]" />
+      {/* <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(105deg,rgba(5,11,23,0.88)_0%,rgba(23,37,75,
+      0.72)_42%,rgba(23,37,75,0.38)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(5,
+      11,23,0.45)_100%)]" /> */}
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(105deg,rgba(5,11,23,0.55)_0%,rgba(23,37,75,0.38)_42%,rgba(23,37,75,0.16)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(5,11,23,0.22)_100%)]" />
 
       <div className="banner-outline hidden sm:block">
         <span className="banner-outline-line" />
@@ -99,14 +105,14 @@ export default function HomeBanner() {
         <p className="banner-side hidden lg:block">Faber Chimney</p>
       </div>
 
-      <div className="custom_container pointer-events-none relative z-10 flex min-h-160 items-center py-16 lg:min-h-195 lg:py-20">
-        <div key={slide.title} className="pointer-events-auto max-w-2xl">
+      <div className="banner-copy custom_container pointer-events-none relative z-10 flex items-start py-8 sm:min-h-140 sm:items-center sm:py-14 lg:min-h-170 lg:py-16">
+        <div key={slide.title} className="pointer-events-auto w-full max-w-2xl">
           <p className="banner-copy-item flex items-center gap-3 text-[12px] font-bold tracking-[0.22em] text-secondary uppercase">
             <span className="banner-eyebrow-line h-px w-8 origin-left bg-secondary" />
             {slide.eyebrow}
           </p>
 
-          <h1 className="mt-5">
+          <h1 className="mt-2 sm:mt-3">
             <span className="banner-title-mask">
               <span className="text-[38px] leading-[0.95] font-extrabold text-white sm:text-5xl lg:text-[58px]">
                 {slide.title}
@@ -119,23 +125,23 @@ export default function HomeBanner() {
             </span>
           </h1>
 
-          <span className="banner-copy-item mt-5 inline-flex rounded-md bg-primary px-3.5 py-1.5 text-[12px] font-bold tracking-[0.14em] text-white uppercase">
+          <span className="banner-copy-item mt-2.5 inline-flex rounded-md bg-primary px-3.5 py-1.5 text-[12px] font-bold tracking-[0.14em] text-white uppercase sm:mt-3">
             {slide.badge}
           </span>
 
-          <p className="banner-copy-item mt-5 max-w-lg text-[15px] leading-7 text-white/70 sm:text-base">
+          <p className="banner-copy-item mt-2.5 max-w-lg text-[15px] leading-6 text-white/70 sm:mt-3 sm:text-base">
             {slide.description}
           </p>
 
-          <div className="banner-copy-item mt-8 grid gap-4 sm:grid-cols-3">
+          <div className="banner-copy-item mt-4 hidden grid-cols-3 gap-2 sm:mt-5 sm:grid sm:gap-3">
             {highlights.map((item) => {
               const Icon = highlightIcons[item.icon]
               return (
-                <div key={item.title} className="banner-feature flex items-center gap-3">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary text-white">
+                <div key={item.title} className="banner-feature flex min-w-0 items-center gap-2 sm:gap-3">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-secondary text-white sm:h-10 sm:w-10">
                     <Icon className="size-4" />
                   </span>
-                  <p className="text-[11px] leading-4 font-bold tracking-[0.08em] text-white uppercase">
+                  <p className="min-w-0 text-[10px] leading-3.5 font-bold tracking-[0.06em] text-white uppercase sm:text-[11px] sm:leading-4 sm:tracking-[0.08em]">
                     {item.title}
                     <span className="block">{item.subtitle}</span>
                   </p>
@@ -144,10 +150,10 @@ export default function HomeBanner() {
             })}
           </div>
 
-          <div className="banner-copy-item mt-8 flex flex-wrap items-center gap-3">
+          <div className="banner-copy-item mt-4 flex flex-wrap items-center gap-2.5 sm:mt-5">
             <a
               href={site.phoneHref}
-              className="banner-cta inline-flex items-center gap-2 rounded-full bg-secondary px-7 py-3.5 text-[12px] font-bold tracking-[0.14em] text-white uppercase"
+              className="banner-cta hidden items-center gap-2 rounded-full bg-secondary px-7 py-3.5 text-[12px] font-bold tracking-[0.14em] text-white uppercase sm:inline-flex"
             >
               <LuPhone className="size-4" />
               <span>Book Service</span>
@@ -161,7 +167,7 @@ export default function HomeBanner() {
             </Link>
           </div>
 
-          <div className="banner-copy-item mt-10 flex items-center gap-3">
+          <div className="banner-copy-item banner-pager mt-5 sm:mt-6">
             {heroSlides.map((item, itemIndex) => (
               <button
                 key={item.title}
@@ -169,20 +175,11 @@ export default function HomeBanner() {
                 aria-label={`Show slide ${itemIndex + 1}`}
                 onPointerDown={(event) => event.stopPropagation()}
                 onClick={() => goTo(itemIndex)}
-                className="flex h-8 items-center"
+                className={`banner-pager-dot${itemIndex === index ? ' is-active' : ''}`}
               >
-                <span
-                  className={`relative block h-px overflow-hidden transition-all duration-500 ${
-                    itemIndex === index ? 'w-14 bg-white/20' : 'w-6 bg-white/20 hover:bg-white/40'
-                  }`}
-                >
-                  {itemIndex === index ? (
-                    <span
-                      key={`${item.title}-${index}`}
-                      className="banner-progress absolute inset-y-0 left-0 bg-secondary"
-                    />
-                  ) : null}
-                </span>
+                {itemIndex === index ? (
+                  <span key={`${item.title}-${index}`} className="banner-progress" />
+                ) : null}
               </button>
             ))}
           </div>
@@ -201,7 +198,7 @@ export default function HomeBanner() {
         aria-label="Previous slide"
         onPointerDown={(event) => event.stopPropagation()}
         onClick={goPrev}
-        className="banner-control absolute top-1/2 left-4 z-30 hidden h-11 w-11 -translate-y-1/2 items-center justify-center border border-white/25 text-white md:flex lg:left-20"
+        className="banner-control absolute top-1/2 left-3 z-30 flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-white/40 text-white md:left-4 md:h-11 md:w-11 lg:left-20"
       >
         <LuChevronLeft className="size-5" />
       </button>
@@ -210,7 +207,7 @@ export default function HomeBanner() {
         aria-label="Next slide"
         onPointerDown={(event) => event.stopPropagation()}
         onClick={goNext}
-        className="banner-control absolute top-1/2 right-4 z-30 hidden h-11 w-11 -translate-y-1/2 items-center justify-center border border-white/25 text-white md:flex lg:right-16"
+        className="banner-control absolute top-1/2 right-3 z-30 flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-white/40 text-white md:right-4 md:h-11 md:w-11 lg:right-16"
       >
         <LuChevronRight className="size-5" />
       </button>

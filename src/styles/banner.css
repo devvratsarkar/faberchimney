@@ -157,8 +157,15 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 18%;
   transform: scale(1.02);
   transition: transform 8.5s linear;
+}
+
+@media (min-width: 640px) {
+  .banner-image {
+    object-position: center right;
+  }
 }
 
 .swiper-slide-active .banner-image {
@@ -215,6 +222,9 @@
 
 .banner-control {
   pointer-events: auto;
+  background: rgb(255 255 255 / 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   transition:
     background-color 400ms var(--banner-ease),
     color 400ms var(--banner-ease),
@@ -227,6 +237,37 @@
   border-color: var(--color-secondary);
   color: #ffffff;
   outline: none;
+}
+
+.banner-pager {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.banner-pager-dot {
+  position: relative;
+  display: block;
+  height: 3px;
+  width: 1.35rem;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  background: rgb(255 255 255 / 0.28);
+  transition:
+    width 400ms var(--banner-ease),
+    background-color 400ms var(--banner-ease);
+}
+
+.banner-pager-dot.is-active {
+  width: 2.75rem;
+  background: rgb(255 255 255 / 0.2);
+}
+
+.banner-pager-dot .banner-progress {
+  position: absolute;
+  inset: 0;
+  background: var(--color-secondary);
 }
 
 @keyframes banner-fade {

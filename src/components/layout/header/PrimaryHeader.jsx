@@ -21,7 +21,7 @@ export default function PrimaryHeader() {
 
   return (
     <header className="sticky top-0 z-50 w-full overflow-x-clip">
-      <div className="h-[3px] bg-linear-to-r from-secondary via-accent to-secondary" />
+      <div className="h-0.75 bg-linear-to-r from-secondary via-accent to-secondary" />
       <div
         className={`overflow-hidden transition-all duration-300 ${
           scrolled ? 'max-h-0 opacity-0' : 'max-h-12 opacity-100'
