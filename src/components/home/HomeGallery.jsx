@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { Link } from 'react-router-dom'
 import { galleryItems } from '../../data/site.js'
 import { LuChevronLeft, LuChevronRight, LuExpand, LuSearch, LuX } from 'react-icons/lu'
@@ -82,58 +83,57 @@ export default function HomeGallery() {
         </p>
       </div>
 
-      {current ? (
-        <div
-          className="gallery-lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-label={current.title}
-          onClick={() => setActive(null)}
-        >
-          <button
-            type="button"
-            className="gallery-lightbox-close"
-            aria-label="Close gallery"
-            onClick={() => setActive(null)}
-          >
-            <LuX className="size-6" />
-          </button>
-          <button
-            type="button"
-            className="gallery-lightbox-nav is-prev"
-            aria-label="Previous image"
-            onClick={(event) => {
-              event.stopPropagation()
-              goTo(active - 1)
-            }}
-          >
-            <LuChevronLeft className="size-5" />
-          </button>
-          <figure
-            className="gallery-lightbox-frame"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <img src={current.src} alt={current.title} />
-            <figcaption>
-              <span>{current.title}</span>
-              <span>
-                {String(active + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
-              </span>
-            </figcaption>
-          </figure>
-          <button
-            type="button"
-            className="gallery-lightbox-nav is-next"
-            aria-label="Next image"
-            onClick={(event) => {
-              event.stopPropagation()
-              goTo(active + 1)
-            }}
-          >
-            <LuChevronRight className="size-5" />
-          </button>
-        </div>
-      ) : null}
+      {current
+        ? createPortal(
+            <div
+              className="gallery-lightbox"
+              role="dialog"
+              aria-modal="true"
+              aria-label={current.title}
+              onClick={() => setActive(null)}
+            >
+              <button
+                type="button"
+                className="gallery-lightbox-close"
+                aria-label="Close gallery"
+                onClick={() => setActive(null)}
+              >
+                <LuX className="size-6" />
+              </button>
+
+              <div className="gallery-lightbox-stage" onClick={(event) => event.stopPropagation()}>
+                <figure className="gallery-lightbox-frame">
+                  <div className="gallery-lightbox-photo">
+                    <img src={current.src} alt={current.title} />
+                    <button
+                      type="button"
+                      className="gallery-lightbox-nav is-prev"
+                      aria-label="Previous image"
+                      onClick={() => goTo(active - 1)}
+                    >
+                      <LuChevronLeft className="size-5" />
+                    </button>
+                    <button
+                      type="button"
+                      className="gallery-lightbox-nav is-next"
+                      aria-label="Next image"
+                      onClick={() => goTo(active + 1)}
+                    >
+                      <LuChevronRight className="size-5" />
+                    </button>
+                  </div>
+                  <figcaption>
+                    <span>{current.title}</span>
+                    <span>
+                      {String(active + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+                    </span>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>,
+            document.body,
+          )
+        : null}
     </section>
   )
 }

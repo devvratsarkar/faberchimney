@@ -54,7 +54,7 @@ export default function GalleryPage() {
 
       {active !== null ? (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-navy-deep/95 p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-navy-deep/20 p-4 backdrop-blur-sm"
           onClick={() => setActive(null)}
         >
           <button
@@ -68,7 +68,7 @@ export default function GalleryPage() {
           <img
             src={galleryItems[active].src}
             alt={galleryItems[active].title}
-            className="max-h-[82vh] max-w-[88vw] rounded-xl object-contain"
+            className="h-auto max-h-[min(72dvh,calc(100dvh-6rem))] w-auto max-w-[min(92vw,56rem)] rounded-xl object-contain"
             onClick={(event) => event.stopPropagation()}
           />
         </div>
